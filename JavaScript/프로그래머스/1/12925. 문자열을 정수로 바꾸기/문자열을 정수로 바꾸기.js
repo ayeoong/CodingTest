@@ -1,3 +1,1 @@
-function solution(s) {
-    return +s;
-}
+const solution = s => +s;
