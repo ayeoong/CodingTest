@@ -1,6 +1,1 @@
-function solution(s){
-    let str = s.toLowerCase().split("");
-    let p = str.filter(v => v === 'p').length;
-    let y = str.filter(v => v === 'y').length;
-    return p === y;
-}
+const solution = s => ![...s.toLowerCase()].reduce((a, c) => c === `p`? a += 1 : c === `y`? a -= 1 : a, 0); 
