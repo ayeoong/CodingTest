@@ -1,10 +1,11 @@
-const solution = (name, yearning, photo) => {
+function solution(name, yearning, photo) {
+    // var answer = [];
+    // return answer;
     
-    const data = name.reduce((a, c, i) => {
-        a[c] = yearning[i];
-        return a;
-    }, {});
-    
-    return photo.map(a => a.reduce((acc, cur) => acc += data[cur] ?? 0, 0));
-    
+    const obj = {};
+    // name = key, yearning = value;
+    for(let i=0; i<name.length; i++) {
+        // console.log(obj.name[i])
+        console.log(obj[name[i]])
+    }
 }
