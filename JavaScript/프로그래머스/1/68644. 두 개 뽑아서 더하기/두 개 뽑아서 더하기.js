@@ -11,8 +11,8 @@ function solution(numbers) {
             
         }  
     }
-    
-    return Object.keys(data).map(Number);
+    // console.log(data);
+    return Object.keys(data).map(Number).sort((a, b) => a - b);
     // console.log(data)
     // console.log(Object.keys(data).map(Number))
 //     let answer = [];
