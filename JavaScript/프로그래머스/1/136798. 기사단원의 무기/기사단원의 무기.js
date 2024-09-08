@@ -1,27 +1,44 @@
 // 13:42 ~ 
 function solution(number, limit, power) {
     let total = 0;
-    
-    for(let i = 1; i <= number; i++) {
-        let divisor = 0;
-        
-        // for(let j = 1; j <= Math.sqrt(i); j++) {
-        for(let j = 1; j * j <= i; j++) {
-            if(i % j === 0) {
-                divisor += 1;
-                
-                // 36의 약수 6, 6 이런 경우에는 약수 두 번 들어가니까
-                if(i / j !== j) {
-                    divisor += 1;
-                }
+    const calc = (v) => {
+        let cnt = 0;
+        for(let i = 1; i * i <= v; i++) {
+            if((v % i) === 0) {
+                if((v / i) === i) cnt++;
+                else cnt += 2;
             }
         }
-        // console.log(divisor);
-        // divisor가 limit보다 큰지 아닌지
-        let weapon = divisor > limit? power : divisor;
-        
-        total += weapon;
+        return cnt > limit? power : cnt;
     }
+    const result = [];
+    for(let i = 1; i <= number; i++) {
+        if(i === 1) result.push(1);
+        else if(i === 2) result.push(2);
+        else result.push(calc(i));
+    }
+    
+    return result.reduce((a, c) => a += c, 0);
+//     for(let i = 1; i <= number; i++) {
+//         let divisor = 0;
+        
+//         for(let j = 1; j <= Math.sqrt(i); j++) {
+//         // for(let j = 1; j * j <= i; j++) {
+//             if(i % j === 0) {
+//                 divisor += 1;
+                
+//                 // 36의 약수 6, 6 이런 경우에는 약수 두 번 들어가니까
+//                 if(i / j !== j) {
+//                     divisor += 1;
+//                 }
+//             }
+//         }
+//         // console.log(divisor);
+//         // divisor가 limit보다 큰지 아닌지
+//         let weapon = divisor > limit? power : divisor;
+        
+//         total += weapon;
+//     }
     
     return total;
     // const divisor = [1, number]; 
